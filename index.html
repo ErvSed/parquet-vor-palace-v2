@@ -36,7 +36,9 @@
   th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:center;white-space:nowrap}
   th{position:sticky;top:0;background:#eaf0f6;color:var(--acc);font-weight:600;z-index:2;cursor:pointer}
   th:hover{background:#dde8f2}
-  td.l,th.l{text-align:left;white-space:normal;min-width:150px}
+  td.l,th.l{text-align:left;white-space:normal;min-width:120px}
+  .tblwrap td{line-height:1.25;padding-top:4px;padding-bottom:4px}
+  .tblwrap td.l{max-width:360px}
   tbody tr{cursor:pointer}
   tbody tr:hover{background:#f0f6fc}
   tbody tr.sel{background:#dcebfa}
@@ -206,6 +208,8 @@ function render(){
   tb.innerHTML = filtered.map((r,i)=>{
     const tds = COLS[mode].map(c=>{
       let v=r[c[0]];
+      if(c[0]==="rooms") v=(r.rooms||[]).join(", ");
+      if(c[0]==="layers" && v) v=String(v).length>85 ? String(v).slice(0,85)+"…" : String(v);
       if(c[0]==="pages") v=(r.pages||[r.page]).join(", ");
       if(c[0]==="firebio") v = r.firebio ? '<span class="fb">да'+(r.area?' · '+nf(r.area)+' м²':'')+'</span>' : "—";
       else if(c[0]==="pattern" && !r.pattern) v = '<span class="ask">уточнить</span>';
