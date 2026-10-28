@@ -36,9 +36,9 @@
   th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:center;white-space:nowrap}
   th{position:sticky;top:0;background:#eaf0f6;color:var(--acc);font-weight:600;z-index:2;cursor:pointer}
   th:hover{background:#dde8f2}
-  td.l,th.l{text-align:left;white-space:normal;min-width:120px}
+  td.l,th.l{text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:120px}
   .tblwrap td{line-height:1.25;padding-top:4px;padding-bottom:4px}
-  .tblwrap td.l{max-width:360px}
+  .tblwrap td.l{max-width:360px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   tbody tr{cursor:pointer}
   tbody tr:hover{background:#f0f6fc}
   tbody tr.sel{background:#dcebfa}
