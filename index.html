@@ -111,12 +111,9 @@ tbody tr.tot td{border-top:2px solid var(--acc);position:sticky;bottom:0}
 <script>
 const COLS = {
   full: [
-    ["mark","Тип пола",""],["tom_full","Проект","l"],["sheet","Лист",""],["rd","РД","l"],["rooms","Помещения","l"],
-    ["area","Площадь, м²","num"],["pattern","Рисунок","l"],
-    ["fanera","Фанера, мм",""],["dob","Добор В×Ш×шаг, мм",""],["lag","Лага В×Ш×шаг, мм",""],
-    ["kera","Керамзит, мм","num"],["peno","Пеностекло, мм","num"],
-    ["mv1","Минвата 1, мм","num"],["mv2","Минвата 2, мм","num"],["firebio","Огнебиозащита",""],
-    ["planinfo","План полов",""]
+    ["mark","Тип пола",""],["tom_full","Проект","l"],["sheet","Лист",""],
+    ["rd","РД","l"],["rooms","Помещения","l"],["area","Площадь, м²","num"],
+    ["layers","Состав слоёв","l"],["planinfo","План полов",""]
   ],
   fifth: [
     ["mark","Тип пола",""],["rd","РД","l"],["pages","Стр. документа (план + экспликация)",""],["rooms","Помещения","l"],
@@ -182,7 +179,7 @@ function apply(){
     if(p==="__none__"){ if(r.pattern) return false; }
     else if(p && r.pattern!==p) return false;
     if(!q) return true;
-    const hay=[r.mark,r.proj,r.rooms.join(" "),r.pattern,r.planka,r.layers,r.note,r.rd].join(" ").toLowerCase();
+    const hay=[r.mark,r.tom_full,r.sheet,r.rd,r.rooms.join(" "),r.layers].join(" ").toLowerCase();
     return hay.includes(q);
   });
   filtered.sort((a,b)=>{
